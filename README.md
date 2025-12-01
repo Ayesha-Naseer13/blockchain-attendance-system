@@ -4,43 +4,6 @@ A comprehensive multi-layered blockchain implementation for managing student att
 
 ## Project Structure
 
-\`\`\`
-/
-├── backend/
-│   ├── models/
-│   │   ├── Department.js
-│   │   ├── Class.js
-│   │   ├── Student.js
-│   │   └── Attendance.js
-│   ├── routes/
-│   │   ├── departments.js
-│   │   ├── classes.js
-│   │   ├── students.js
-│   │   ├── attendance.js
-│   │   └── validation.js
-│   ├── services/
-│   │   └── blockchainService.js
-│   ├── utils/
-│   │   └── blockchain.js
-│   ├── server.js
-│   └── package.json
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   │   └── Sidebar.js
-│   │   ├── pages/
-│   │   │   ├── Dashboard.js
-│   │   │   ├── Departments.js
-│   │   │   ├── Classes.js
-│   │   │   ├── Students.js
-│   │   │   ├── Attendance.js
-│   │   │   └── Validation.js
-│   │   ├── App.js
-│   │   └── index.js
-│   └── package.json
-└── README.md
-\`\`\`
 
 ## Features
 
