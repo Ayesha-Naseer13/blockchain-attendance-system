@@ -33,8 +33,8 @@ const Classes = () => {
     try {
       setLoading(true)
       const [deptRes, classRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/departments"),
-        axios.get("http://localhost:5000/api/classes"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/departments"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/classes"),
       ])
       setDepartments(deptRes.data.data)
       setClasses(classRes.data.data)
@@ -74,13 +74,13 @@ const Classes = () => {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/classes/${editingId}`, formData)
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/classes/${editingId}`, formData)
         setAlert({
           type: "success",
           message: "Class updated successfully",
         })
       } else {
-        await axios.post("http://localhost:5000/api/classes", formData)
+        await axios.post("${process.env.REACT_APP_API_URL}/api/classes", formData)
         setAlert({
           type: "success",
           message: "Class created successfully",
@@ -112,7 +112,7 @@ const Classes = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this class?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/classes/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/classes/${id}`)
         setAlert({
           type: "success",
           message: "Class deleted successfully",

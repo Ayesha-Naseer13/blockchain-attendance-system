@@ -20,7 +20,7 @@ const Validation = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/students")
+      const response = await axios.get("${process.env.REACT_APP_API_URL}/api/students")
       setStudents(response.data.data)
     } catch (error) {
       setAlert({
@@ -33,7 +33,7 @@ const Validation = () => {
   const validateAllChains = async () => {
     try {
       setLoading(true)
-      const response = await axios.get("http://localhost:5000/api/validation/all")
+      const response = await axios.get("${process.env.REACT_APP_API_URL}/api/validation/all")
       setValidationReport(response.data.data)
       setAlert({
         type: "success",
@@ -52,7 +52,7 @@ const Validation = () => {
   const viewStudentHistory = async (studentId) => {
     try {
       setLoading(true)
-      const response = await axios.get(`http://localhost:5000/api/attendance/student/${studentId}`)
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/attendance/student/${studentId}`)
       setStudentHistory(response.data)
     } catch (error) {
       setAlert({

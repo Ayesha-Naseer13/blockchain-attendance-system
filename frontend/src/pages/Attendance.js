@@ -32,8 +32,8 @@ const Attendance = () => {
     try {
       setLoading(true)
       const [classRes, studentRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/classes"),
-        axios.get("http://localhost:5000/api/students"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/classes"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/students"),
       ])
       setClasses(classRes.data.data)
       setStudents(studentRes.data.data)
@@ -54,7 +54,7 @@ const Attendance = () => {
     try {
       if (!selectedClass) return
 
-      const response = await axios.get(`http://localhost:5000/api/attendance/class/${selectedClass}`)
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/attendance/class/${selectedClass}`)
 
       const filtered = response.data.data.filter((record) => {
         const recordDate = new Date(record.date).toISOString().split("T")[0]
@@ -75,7 +75,7 @@ const Attendance = () => {
     e.preventDefault()
 
     try {
-      await axios.post("http://localhost:5000/api/attendance", {
+      await axios.post("${process.env.REACT_APP_API_URL}/api/attendance", {
         ...formData,
         date: selectedDate,
       })

@@ -36,9 +36,9 @@ const Students = () => {
     try {
       setLoading(true)
       const [deptRes, classRes, studentRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/departments"),
-        axios.get("http://localhost:5000/api/classes"),
-        axios.get("http://localhost:5000/api/students"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/departments"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/classes"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/students"),
       ])
       setDepartments(deptRes.data.data)
       setClasses(classRes.data.data)
@@ -76,13 +76,13 @@ const Students = () => {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/students/${editingId}`, formData)
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/students/${editingId}`, formData)
         setAlert({
           type: "success",
           message: "Student updated successfully",
         })
       } else {
-        await axios.post("http://localhost:5000/api/students", formData)
+        await axios.post("${process.env.REACT_APP_API_URL}/api/students", formData)
         setAlert({
           type: "success",
           message: "Student created successfully",
@@ -122,7 +122,7 @@ const Students = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this student?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/students/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/students/${id}`)
         setAlert({
           type: "success",
           message: "Student deleted successfully",

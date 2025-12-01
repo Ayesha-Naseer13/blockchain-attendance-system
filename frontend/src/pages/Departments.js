@@ -35,7 +35,7 @@ const Departments = () => {
   const fetchDepartments = async () => {
     try {
       setLoading(true)
-      const response = await axios.get("http://localhost:5000/api/departments")
+      const response = await axios.get("${process.env.REACT_APP_API_URL}/api/departments")
       setDepartments(response.data.data)
       setAlert(null)
     } catch (error) {
@@ -53,13 +53,13 @@ const Departments = () => {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/departments/${editingId}`, formData)
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/departments/${editingId}`, formData)
         setAlert({
           type: "success",
           message: "Department updated successfully",
         })
       } else {
-        await axios.post("http://localhost:5000/api/departments", formData)
+        await axios.post("${process.env.REACT_APP_API_URL}/api/departments", formData)
         setAlert({
           type: "success",
           message: "Department created successfully",
@@ -91,7 +91,7 @@ const Departments = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this department?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/departments/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/departments/${id}`)
         setAlert({
           type: "success",
           message: "Department deleted successfully",

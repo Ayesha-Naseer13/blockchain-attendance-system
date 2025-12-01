@@ -20,9 +20,9 @@ const Dashboard = () => {
   const fetchStats = async () => {
     try {
       const [deptRes, classRes, studentRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/departments"),
-        axios.get("http://localhost:5000/api/classes"),
-        axios.get("http://localhost:5000/api/students"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/departments"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/classes"),
+        axios.get("${process.env.REACT_APP_API_URL}/api/students"),
       ])
 
       setStats({
